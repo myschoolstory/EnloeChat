@@ -1,0 +1,43 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": ""
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "f62632a6-b2f2-4f4e-828b-e8777088bd2e"
+      }
+    },
+    "insforge": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@insforge/insforge-mcp@latest"
+      ],
+      "env": {
+        "API_KEY": "ik_b26828e4509fa415118566d3571e2bef",
+        "API_BASE_URL": "https://zggzt5ad.us-east.insforge.app"
+      }
+    }
+  }
+
+}
