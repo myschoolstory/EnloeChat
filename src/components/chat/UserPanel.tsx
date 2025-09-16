@@ -30,18 +30,24 @@ export const UserPanel: React.FC<UserPanelProps> = ({ user, profile, onSignOut }
           )}
         </div>
         <div className="user-details">
-          <div className="user-name">{profile?.nickname || user?.email || 'User'}</div>
+          <div className="user-name">{profile?.nickname || user?.email?.split('@')[0] || 'User'}</div>
           <div className="user-status">Online</div>
         </div>
       </div>
 
       <div className="user-actions">
         <button
+          className="user-action-btn settings-btn"
+          title="User Settings"
+          aria-label="User Settings"
+        />
+        <button
           className="sign-out-btn"
           onClick={handleSignOut}
           title="Sign Out"
+          aria-label="Sign Out"
         >
-          Sign Out
+          Logout
         </button>
       </div>
     </div>

@@ -82,9 +82,18 @@ export const ChatLayout: React.FC = () => {
   }
 
   return (
-    <div className="chat-layout">
+    <div className="chat-layout" role="application" aria-label="EnloeChat application">
+      {/* Skip to main content link */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {/* Server List Sidebar */}
-      <div className="server-sidebar">
+      <nav
+        className="server-sidebar"
+        role="navigation"
+        aria-label="Server list"
+      >
         <ServerList
           servers={servers}
           currentServer={currentServer}
@@ -94,10 +103,14 @@ export const ChatLayout: React.FC = () => {
             console.log('Create server clicked');
           }}
         />
-      </div>
+      </nav>
 
       {/* Channel List */}
-      <div className="channel-sidebar">
+      <aside
+        className="channel-sidebar"
+        role="complementary"
+        aria-label="Channel list"
+      >
         {currentServer && (
           <ChannelList
             server={currentServer}
@@ -110,31 +123,40 @@ export const ChatLayout: React.FC = () => {
             }}
           />
         )}
-      </div>
+      </aside>
 
       {/* Main Chat Area */}
-      <div className="chat-main">
+      <main
+        id="main-content"
+        className="chat-main"
+        role="main"
+        aria-label="Chat area"
+      >
         {currentChannel ? (
           <ChatArea
             channel={currentChannel}
             currentUser={user}
           />
         ) : (
-          <div className="chat-placeholder">
+          <div className="chat-placeholder" role="region" aria-live="polite">
             <h2>Welcome to {currentServer?.name || 'EnloeChat'}</h2>
             <p>Select a channel to start chatting!</p>
           </div>
         )}
-      </div>
+      </main>
 
       {/* User Panel */}
-      <div className="user-panel">
+      <aside
+        className="user-panel"
+        role="complementary"
+        aria-label="User information"
+      >
         <UserPanel
           user={user}
           profile={profile}
           onSignOut={signOut}
         />
-      </div>
+      </aside>
     </div>
   );
 };

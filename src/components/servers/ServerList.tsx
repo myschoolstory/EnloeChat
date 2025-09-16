@@ -17,16 +17,18 @@ export const ServerList: React.FC<ServerListProps> = ({
 }) => {
   return (
     <div className="server-list">
-      <div className="server-list-header">
-        <h3>Servers</h3>
-        <button
-          className="create-server-btn"
-          onClick={onCreateServer}
-          title="Create Server"
-        >
-          +
-        </button>
+      {/* Home/Direct Messages Button */}
+      <div 
+        className={`server-home ${!currentServer ? 'active' : ''}`}
+        onClick={() => onServerSelect(null as any)}
+        title="Direct Messages"
+      >
+        <svg width="28" height="20" viewBox="0 0 28 20">
+          <path fill="currentColor" d="M23.021 1.677A21.227 21.227 0 0 0 14 0c-.42 0-.839.02-1.256.059a20.976 20.976 0 0 0-8.023 2.584A21.872 21.872 0 0 0 0 14.5a21.872 21.872 0 0 0 4.721 11.857A20.976 20.976 0 0 0 12.744 29.941c.417.04.836.059 1.256.059s.839-.02 1.256-.059a20.976 20.976 0 0 0 8.023-2.584A21.872 21.872 0 0 0 28 14.5a21.872 21.872 0 0 0-4.979-12.823z"/>
+        </svg>
       </div>
+
+      {servers.length > 0 && <div className="server-separator" />}
 
       <div className="server-items">
         {servers.map((server) => (
@@ -49,6 +51,18 @@ export const ServerList: React.FC<ServerListProps> = ({
             )}
           </div>
         ))}
+
+        {/* Add Server Button */}
+        <button
+          className="create-server-btn"
+          onClick={onCreateServer}
+          title="Add a Server"
+          aria-label="Add a Server"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M20 11.111h-7.111V4h-1.778v7.111H4v1.778h7.111V20h1.778v-7.111H20z"/>
+          </svg>
+        </button>
 
         {servers.length === 0 && (
           <div className="no-servers">
