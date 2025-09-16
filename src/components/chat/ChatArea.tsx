@@ -1,13 +1,12 @@
 import React from 'react';
-import type { Channel, AuthUser } from '../../types';
+import type { Channel } from '../../types';
 import './ChatArea.css';
 
 interface ChatAreaProps {
   channel: Channel;
-  currentUser: AuthUser | null;
 }
 
-export const ChatArea: React.FC<ChatAreaProps> = ({ channel, currentUser }) => {
+export const ChatArea: React.FC<ChatAreaProps> = ({ channel }) => {
   return (
     <div className="chat-area" role="region" aria-labelledby="channel-title">
       <header className="chat-header">

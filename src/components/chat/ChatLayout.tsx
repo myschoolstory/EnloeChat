@@ -135,7 +135,6 @@ export const ChatLayout: React.FC = () => {
         {currentChannel ? (
           <ChatArea
             channel={currentChannel}
-            currentUser={user}
           />
         ) : (
           <div className="chat-placeholder" role="region" aria-live="polite">
