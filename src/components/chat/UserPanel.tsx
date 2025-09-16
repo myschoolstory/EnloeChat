@@ -10,6 +10,7 @@ interface UserPanelProps {
 
 export const UserPanel: React.FC<UserPanelProps> = ({ user, profile, onSignOut }) => {
   const handleSignOut = async () => {
+    console.log('DEBUG: Sign out button clicked');
     try {
       await onSignOut();
     } catch (error) {

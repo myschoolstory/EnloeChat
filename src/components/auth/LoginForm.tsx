@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import './LoginForm.css';
 
 export const LoginForm: React.FC = () => {
@@ -28,7 +28,7 @@ export const LoginForm: React.FC = () => {
       if (!result.success) {
         setError(result.error || 'An error occurred');
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred');
     } finally {
       setIsLoading(false);

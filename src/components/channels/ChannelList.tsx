@@ -28,7 +28,10 @@ export const ChannelList: React.FC<ChannelListProps> = ({
         <h3>{server.name}</h3>
         <button
           className="create-channel-btn"
-          onClick={onCreateChannel}
+          onClick={() => {
+            console.log('DEBUG: Create channel button clicked');
+            onCreateChannel();
+          }}
           title="Create Channel"
           aria-label="Create Channel"
         >
@@ -40,9 +43,12 @@ export const ChannelList: React.FC<ChannelListProps> = ({
         {/* Text Channels Category */}
         {textChannels.length > 0 && (
           <div className="channel-category">
-            <div 
+            <div
               className={`category-header ${categoryCollapsed ? 'collapsed' : ''}`}
-              onClick={() => setCategoryCollapsed(!categoryCollapsed)}
+              onClick={() => {
+                console.log('DEBUG: Category header clicked');
+                setCategoryCollapsed(!categoryCollapsed);
+              }}
             >
               <svg className="category-arrow" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3a.996.996 0 0 1-1.41 0c-.38-.39-.39-1.03 0-1.42z"/>
@@ -53,7 +59,10 @@ export const ChannelList: React.FC<ChannelListProps> = ({
               <div
                 key={channel.id}
                 className={`channel-item ${currentChannel?.id === channel.id ? 'active' : ''}`}
-                onClick={() => onChannelSelect(channel)}
+                onClick={() => {
+                  console.log('DEBUG: Channel item clicked:', channel.name);
+                  onChannelSelect(channel);
+                }}
               >
                 <span className="channel-hash">#</span>
                 <span className="channel-name">{channel.name}</span>
@@ -75,7 +84,10 @@ export const ChannelList: React.FC<ChannelListProps> = ({
               <div
                 key={channel.id}
                 className={`channel-item ${currentChannel?.id === channel.id ? 'active' : ''}`}
-                onClick={() => onChannelSelect(channel)}
+                onClick={() => {
+                  console.log('DEBUG: Voice channel item clicked:', channel.name);
+                  onChannelSelect(channel);
+                }}
               >
                 <svg className="channel-voice-icon" width="20" height="20" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904Z"/>
@@ -91,7 +103,10 @@ export const ChannelList: React.FC<ChannelListProps> = ({
         {channels.length === 0 && (
           <div className="no-channels">
             <p>No channels yet</p>
-            <button onClick={onCreateChannel} className="create-first-channel-btn">
+            <button onClick={() => {
+              console.log('DEBUG: Create first channel button clicked');
+              onCreateChannel();
+            }} className="create-first-channel-btn">
               Create your first channel
             </button>
           </div>

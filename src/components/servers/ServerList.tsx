@@ -5,7 +5,7 @@ import './ServerList.css';
 interface ServerListProps {
   servers: Server[];
   currentServer: Server | null;
-  onServerSelect: (server: Server) => void;
+  onServerSelect: (server: Server | null) => void;
   onCreateServer: () => void;
 }
 
@@ -18,9 +18,12 @@ export const ServerList: React.FC<ServerListProps> = ({
   return (
     <div className="server-list">
       {/* Home/Direct Messages Button */}
-      <div 
+      <div
         className={`server-home ${!currentServer ? 'active' : ''}`}
-        onClick={() => onServerSelect(null as any)}
+        onClick={() => {
+          console.log('DEBUG: Server home clicked');
+          onServerSelect(null);
+        }}
         title="Direct Messages"
       >
         <svg width="28" height="20" viewBox="0 0 28 20">
@@ -35,7 +38,10 @@ export const ServerList: React.FC<ServerListProps> = ({
           <div
             key={server.id}
             className={`server-item ${currentServer?.id === server.id ? 'active' : ''}`}
-            onClick={() => onServerSelect(server)}
+            onClick={() => {
+              console.log('DEBUG: Server item clicked:', server.name);
+              onServerSelect(server);
+            }}
             title={server.name}
           >
             {server.icon_url ? (
@@ -55,7 +61,10 @@ export const ServerList: React.FC<ServerListProps> = ({
         {/* Add Server Button */}
         <button
           className="create-server-btn"
-          onClick={onCreateServer}
+          onClick={() => {
+            console.log('DEBUG: Create server button clicked');
+            onCreateServer();
+          }}
           title="Add a Server"
           aria-label="Add a Server"
         >
@@ -67,7 +76,10 @@ export const ServerList: React.FC<ServerListProps> = ({
         {servers.length === 0 && (
           <div className="no-servers">
             <p>No servers yet</p>
-            <button onClick={onCreateServer} className="create-first-server-btn">
+            <button onClick={() => {
+              console.log('DEBUG: Create first server button clicked');
+              onCreateServer();
+            }} className="create-first-server-btn">
               Create your first server
             </button>
           </div>

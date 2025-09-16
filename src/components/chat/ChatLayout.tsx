@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 import { serverService } from '../../services/insforge';
 import type { Server, Channel } from '../../types';
 import { ServerList } from '../servers/ServerList';
@@ -16,19 +16,7 @@ export const ChatLayout: React.FC = () => {
   const [currentChannel, setCurrentChannel] = useState<Channel | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (user) {
-      loadUserServers();
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (currentServer) {
-      loadServerChannels();
-    }
-  }, [currentServer]);
-
-  const loadUserServers = async () => {
+  const loadUserServers = useCallback(async () => {
     if (!user) return;
 
     try {
@@ -45,9 +33,9 @@ export const ChatLayout: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user, currentServer]);
 
-  const loadServerChannels = async () => {
+  const loadServerChannels = useCallback(async () => {
     if (!currentServer) return;
 
     try {
@@ -62,14 +50,28 @@ export const ChatLayout: React.FC = () => {
     } catch (error) {
       console.error('Failed to load channels:', error);
     }
-  };
+  }, [currentServer, currentChannel]);
 
-  const handleServerSelect = (server: Server) => {
+  useEffect(() => {
+    if (user) {
+      loadUserServers();
+    }
+  }, [user, loadUserServers]);
+
+  useEffect(() => {
+    if (currentServer) {
+      loadServerChannels();
+    }
+  }, [currentServer, loadServerChannels]);
+
+  const handleServerSelect = (server: Server | null) => {
+    console.log('DEBUG: handleServerSelect called with server:', server?.name || 'null');
     setCurrentServer(server);
     setCurrentChannel(null); // Reset channel when switching servers
   };
 
   const handleChannelSelect = (channel: Channel) => {
+    console.log('DEBUG: handleChannelSelect called with channel:', channel.name);
     setCurrentChannel(channel);
   };
 

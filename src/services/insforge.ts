@@ -7,7 +7,8 @@ import type {
   DMChannel,
   DMMessage,
   ServerMember,
-  ApiResponse
+  ApiResponse,
+  AuthUser
 } from '../types';
 
 // Initialize Insforge client
@@ -17,36 +18,36 @@ const client = createClient({
 
 // Auth Services
 export const authService = {
-  async signUp(email: string, password: string): Promise<ApiResponse<{ user: any; accessToken: string }>> {
+  async signUp(email: string, password: string): Promise<ApiResponse<{ user: AuthUser; accessToken: string }>> {
     try {
       const { data, error } = await client.auth.signUp({ email, password });
       if (error) throw error;
       if (!data) throw new Error('No data returned');
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as { user: AuthUser; accessToken: string }, error: error as string };
     }
   },
 
-  async signIn(email: string, password: string): Promise<ApiResponse<{ user: any; accessToken: string }>> {
+  async signIn(email: string, password: string): Promise<ApiResponse<{ user: AuthUser; accessToken: string }>> {
     try {
       const { data, error } = await client.auth.signInWithPassword({ email, password });
       if (error) throw error;
       if (!data) throw new Error('No data returned');
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as { user: AuthUser; accessToken: string }, error: error as string };
     }
   },
 
-  async getCurrentUser(): Promise<ApiResponse<{ user: any; profile: User }>> {
+  async getCurrentUser(): Promise<ApiResponse<{ user: AuthUser; profile: User }>> {
     try {
       const { data, error } = await client.auth.getCurrentUser();
       if (error) throw error;
       if (!data) throw new Error('No data returned');
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as { user: AuthUser; profile: User }, error: error as string };
     }
   },
 
@@ -56,7 +57,7 @@ export const authService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as User, error: error as string };
     }
   },
 
@@ -73,7 +74,7 @@ export const userService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as User, error: error as string };
     }
   },
 
@@ -88,7 +89,7 @@ export const userService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as User, error: error as string };
     }
   }
 };
@@ -105,7 +106,7 @@ export const serverService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as Server, error: error as string };
     }
   },
 
@@ -132,7 +133,7 @@ export const serverService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as ServerMember, error: error as string };
     }
   },
 
@@ -191,7 +192,7 @@ export const channelService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as Channel, error: error as string };
     }
   }
 };
@@ -223,7 +224,7 @@ export const messageService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as Message, error: error as string };
     }
   },
 
@@ -267,7 +268,7 @@ export const dmService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as DMChannel, error: error as string };
     }
   },
 
@@ -296,7 +297,7 @@ export const dmService = {
       if (error) throw error;
       return { data };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as DMMessage, error: error as string };
     }
   }
 };
@@ -317,7 +318,7 @@ export const storageService = {
       if (!data) throw new Error('Upload failed');
       return { data: { url: data.url } };
     } catch (error) {
-      return { data: null as any, error: error as string };
+      return { data: null as unknown as { url: string }, error: error as string };
     }
   },
 
