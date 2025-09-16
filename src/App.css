@@ -1,0 +1,115 @@
+/* Global styles for EnloeChat */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Whitney', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  background-color: #36393f;
+  color: #dcddde;
+  overflow: hidden;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Utility classes */
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #36393f;
+}
+
+.loading-spinner {
+  color: #dcddde;
+  font-size: 1.2rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Button styles */
+button {
+  font-family: inherit;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:focus {
+  outline: 2px solid #5865f2;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Input styles */
+input, textarea {
+  font-family: inherit;
+  border: 1px solid #202225;
+  border-radius: 4px;
+  padding: 8px 12px;
+  background-color: #40444b;
+  color: #dcddde;
+  font-size: 0.9rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #5865f2;
+  box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.2);
+}
+
+input::placeholder, textarea::placeholder {
+  color: #72767d;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2f3136;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #202225;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #36393f;
+}
+
+/* Selection styles */
+::selection {
+  background-color: #5865f2;
+  color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #root {
+    font-size: 14px;
+  }
+}

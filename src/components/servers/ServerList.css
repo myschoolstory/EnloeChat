@@ -1,0 +1,135 @@
+.server-list {
+  width: 72px;
+  background-color: #202225;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  overflow-y: auto;
+}
+
+.server-list-header {
+  width: 100%;
+  padding: 0 12px 12px;
+  border-bottom: 1px solid #36393f;
+  margin-bottom: 8px;
+}
+
+.server-list-header h3 {
+  color: #dcddde;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.create-server-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #36393f;
+  border: none;
+  border-radius: 50%;
+  color: #43b581;
+  font-size: 24px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin: 0 auto;
+}
+
+.create-server-btn:hover {
+  background-color: #43b581;
+  color: white;
+}
+
+.server-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.server-item {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-radius 0.2s ease, background-color 0.2s ease;
+  overflow: hidden;
+}
+
+.server-item:hover {
+  border-radius: 30%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.server-item.active {
+  border-radius: 30%;
+  background-color: #5865f2;
+}
+
+.server-item.active::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 40px;
+  background-color: white;
+  border-radius: 0 2px 2px 0;
+}
+
+.server-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.server-icon-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.no-servers {
+  padding: 20px 12px;
+  text-align: center;
+  color: #b9bbbe;
+}
+
+.no-servers p {
+  margin: 0 0 16px 0;
+  font-size: 0.9rem;
+}
+
+.create-first-server-btn {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create-first-server-btn:hover {
+  background-color: #4752c4;
+}

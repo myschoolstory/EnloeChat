@@ -1,0 +1,93 @@
+.chat-layout {
+  height: 100vh;
+  display: flex;
+  background-color: #36393f;
+}
+
+.chat-layout.loading {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading-spinner {
+  color: #dcddde;
+  font-size: 1.2rem;
+}
+
+.server-sidebar {
+  flex-shrink: 0;
+}
+
+.channel-sidebar {
+  flex-shrink: 0;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b9bbbe;
+  text-align: center;
+  padding: 40px;
+}
+
+.chat-placeholder h2 {
+  color: #dcddde;
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+}
+
+.chat-placeholder p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.user-panel {
+  position: absolute;
+  bottom: 0;
+  left: 312px; /* 72px server + 240px channel */
+  right: 0;
+  z-index: 10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .server-sidebar {
+    display: none; /* Hide server list on mobile */
+  }
+
+  .channel-sidebar {
+    width: 200px; /* Reduce channel list width on mobile */
+  }
+
+  .user-panel {
+    left: 200px; /* Adjust user panel position */
+  }
+}
+
+@media (max-width: 480px) {
+  .channel-sidebar {
+    width: 180px;
+  }
+
+  .user-panel {
+    left: 180px;
+  }
+
+  .chat-placeholder {
+    padding: 20px;
+  }
+
+  .chat-placeholder h2 {
+    font-size: 1.2rem;
+  }
+}

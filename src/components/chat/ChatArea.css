@@ -1,0 +1,107 @@
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #36393f;
+}
+
+.chat-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #202225;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2f3136;
+}
+
+.channel-title {
+  color: #dcddde;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.channel-info {
+  color: #b9bbbe;
+  font-size: 0.8rem;
+}
+
+.member-count {
+  opacity: 0.7;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.welcome-message {
+  text-align: center;
+  color: #b9bbbe;
+  margin-top: 40px;
+}
+
+.welcome-message h4 {
+  color: #dcddde;
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+}
+
+.welcome-message p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.message-input-container {
+  padding: 16px 20px;
+  border-top: 1px solid #202225;
+  background-color: #36393f;
+}
+
+.message-input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #202225;
+  border-radius: 8px;
+  background-color: #40444b;
+  color: #dcddde;
+  font-size: 0.9rem;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #5865f2;
+}
+
+.message-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.send-button {
+  padding: 12px 20px;
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #4752c4;
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
