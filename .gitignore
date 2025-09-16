@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 # Kilo Code (Yes, we vibe code!)
+.kilocode/
